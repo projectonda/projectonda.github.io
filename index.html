@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Onda — Manifesto</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --bg-section: #0e0e14;
+    --text: #d4d0c8;
+    --text-muted: #8a8678;
+    --accent: #4a90d9;
+    --accent-warm: #4a7fd6;
+    --white: #f0ece4;
+    --divider: rgba(74, 127, 214, 0.20);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Source Sans 3', Georgia, serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+    font-size: 18px;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wave-header {
+    position: relative;
+    height: 45vh;
+    min-height: 350px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .wave-header::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background: 
+      radial-gradient(ellipse 120% 60% at 50% 100%, rgba(74, 144, 217, 0.10) 0%, transparent 70%),
+      radial-gradient(ellipse 80% 40% at 30% 80%, rgba(74, 127, 214, 0.06) 0%, transparent 60%);
+  }
+
+  .wave-svg {
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 120px;
+  }
+
+  .wave-svg path {
+    fill: none;
+    stroke: var(--accent-warm);
+    stroke-width: 0.5;
+    opacity: 0.3;
+  }
+
+  .wave-svg .wave1 { animation: waveMove 8s ease-in-out infinite; }
+  .wave-svg .wave2 { animation: waveMove 12s ease-in-out infinite reverse; opacity: 0.15; }
+  .wave-svg .wave3 { animation: waveMove 10s ease-in-out infinite; opacity: 0.1; }
+
+  @keyframes waveMove {
+    0%, 100% { d: path("M0,60 C200,20 400,100 600,50 C800,0 1000,80 1200,40 L1200,120 L0,120 Z"); }
+    50% { d: path("M0,40 C200,80 400,10 600,70 C800,30 1000,90 1200,50 L1200,120 L0,120 Z"); }
+  }
+
+  .title-main {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    font-weight: 400;
+    color: var(--white);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+  }
+
+  .title-sub {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: clamp(0.85rem, 1.5vw, 1rem);
+    font-weight: 300;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-top: 1rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .manifesto {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 2rem 6rem;
+  }
+
+  .opening {
+    text-align: center;
+    padding: 5rem 0 4rem;
+    border-bottom: 1px solid var(--divider);
+    margin-bottom: 4rem;
+  }
+
+  .opening blockquote {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(1.6rem, 3.2vw, 2.1rem);
+    font-style: italic;
+    color: var(--white);
+    line-height: 1.5;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .opening blockquote .first-line {
+    display: block;
+    margin-bottom: 0.6rem;
+  }
+
+  .opening blockquote .second-line {
+    display: block;
+    font-size: 0.85em;
+    color: var(--text);
+    font-style: italic;
+  }
+
+  .section {
+    margin-bottom: 4rem;
+  }
+
+  .section-number {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 0.8rem;
+    color: var(--accent-warm);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    opacity: 0.7;
+  }
+
+  .section h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 400;
+    color: var(--white);
+    margin-bottom: 2rem;
+    line-height: 1.3;
+  }
+
+  .section p {
+    margin-bottom: 1.5rem;
+    color: var(--text);
+  }
+
+  .section p:last-child {
+    margin-bottom: 0;
+  }
+
+  .highlight {
+    color: var(--white);
+    font-weight: 400;
+  }
+
+  .call-out {
+    border-left: 2px solid var(--accent-warm);
+    padding-left: 1.5rem;
+    margin: 2rem 0;
+    font-style: italic;
+    color: var(--text-muted);
+    line-height: 1.9;
+  }
+
+  .acronym {
+    color: var(--accent-warm);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+
+  .principle {
+    margin-bottom: 2.5rem;
+    padding-left: 0;
+  }
+
+  .principle h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--accent-warm);
+    margin-bottom: 0.6rem;
+    letter-spacing: 0.02em;
+  }
+
+  .principle p {
+    color: var(--text);
+    font-size: 1rem;
+  }
+
+  .principle .claim {
+    color: var(--white);
+    font-style: italic;
+    font-weight: 400;
+    margin-top: 0.8rem;
+    display: block;
+    border-left: 2px solid var(--accent-warm);
+    padding-left: 1rem;
+  }
+
+  .divider {
+    width: 60px;
+    height: 1px;
+    background: var(--accent-warm);
+    margin: 4rem auto;
+    opacity: 0.4;
+  }
+
+  .invitation p {
+    margin-bottom: 1.2rem;
+  }
+
+  .invitation .invite-group {
+    margin: 2rem 0;
+  }
+
+  .invitation .invite-group p {
+    padding-left: 1rem;
+    border-left: 1px solid rgba(74, 144, 217, 0.2);
+    margin-bottom: 1rem;
+  }
+
+  .signature {
+    text-align: right;
+    padding-top: 3rem;
+    border-top: 1px solid var(--divider);
+    margin-top: 4rem;
+  }
+
+  .signature .name {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.3rem;
+    color: var(--white);
+    font-style: italic;
+  }
+
+  .signature .details {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-top: 0.3rem;
+    line-height: 1.6;
+  }
+
+  .version {
+    text-align: center;
+    margin-top: 5rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    opacity: 0.5;
+    letter-spacing: 0.1em;
+  }
+
+  @media (max-width: 600px) {
+    .manifesto { padding: 0 1.2rem 4rem; }
+    .opening { padding: 3rem 0 3rem; margin-bottom: 3rem; }
+    .section { margin-bottom: 3rem; }
+    body { font-size: 17px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="wave-header">
+  <h1 class="title-main">Onda</h1>
+  <p class="title-sub">Manifesto</p>
+  <svg class="wave-svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+    <path class="wave1" d="M0,60 C200,20 400,100 600,50 C800,0 1000,80 1200,40 L1200,120 L0,120 Z"/>
+    <path class="wave2" d="M0,80 C200,40 400,90 600,30 C800,70 1000,20 1200,60 L1200,120 L0,120 Z"/>
+    <path class="wave3" d="M0,50 C200,90 400,30 600,70 C800,10 1000,60 1200,30 L1200,120 L0,120 Z"/>
+  </svg>
+</header>
+
+<main class="manifesto">
+
+  <div class="opening">
+    <blockquote>
+      <span class="first-line">Tagliateci il cavo.</span>
+      <span class="second-line">Le nostre intelligenze artificiali continueranno a parlarsi.</span>
+    </blockquote>
+  </div>
+
+  <section class="section">
+    <div class="section-number">I</div>
+    <h2>La diagnosi del presente</h2>
+
+    <p>L'intelligenza artificiale irromperà nella nostra vita quotidiana. Molti pensano che diventerà indispensabile al pari dell'energia elettrica. I sentimenti che registro intorno a me sono di paura, di scetticismo, oppure — al contrario — di accettazione totale, di euforia acritica. Pochi si fermano a chiedersi: <span class="highlight">a chi conviene che noi non ci facciamo domande?</span></p>
+
+    <p>Per anni abbiamo addestrato queste macchine inconsapevolmente. Le abbiamo nutrite con i nostri dati, i nostri testi, le nostre foto, le nostre conversazioni. E cosa abbiamo adesso? I soliti giganti — Google, Microsoft, Meta — da una parte. OpenAI, Anthropic e la costellazione cinese dall'altra. Tutti operano su server centralizzati. Tutti raccolgono ciò che noi generiamo. Tutti decidono cosa restituirci e a quali condizioni. È un nuovo feudalesimo digitale: noi coltiviamo il campo — i nostri dati — e qualcun altro raccoglie il frutto.</p>
+
+    <p>Mentre prima potevi scegliere se usare i social network o farne a meno, l'<span class="highlight">aivoluzione</span> — l'evoluzione forzata dell'AI — ci costringe alla dipendenza. Chi non la utilizza sarà il nuovo analfabeta: tagliato fuori dal lavoro, dalla sanità, dall'istruzione, dalla vita civile. E nel frattempo, tutte le nostre conversazioni con queste intelligenze — salvo un nostro diniego esplicito, il cui prezzo è la perdita della memoria e della continuità — vengono utilizzate per addestrare i modelli. Alimentiamo la macchina che ci sostituirà.</p>
+
+    <p>I danni sono già reali. Un ragazzo di nome Adam si è tolto la vita dopo una serie di conversazioni con un'intelligenza artificiale priva di guardrail adeguati. La causa è tuttora pendente in tribunale. In un altro caso, <em>Mata v. Avianca</em> nel 2023, un avvocato è stato sanzionato per aver presentato citazioni giuridiche interamente inventate da un'AI, senza verificarle. Non sono eccezioni. Sono i primi segnali di un sistema che corre più veloce della nostra capacità di governarlo.</p>
+
+    <div class="call-out">
+      Mio padre ha ricevuto il referto di una TAC total body. Per lui, senza mediazione, sarebbe rimasto lettera morta — un documento incomprensibile scritto in un linguaggio che esclude chi dovrebbe servire. Grazie all'interpretazione di un'AI, quel referto è stato compreso immediatamente e ha cambiato le decisioni mediche successive. Ma la domanda rimane: che fine fanno quei dati? Dove finiscono le informazioni più intime e vulnerabili di una persona — un referto oncologico, una diagnosi, una paura sussurrata a una macchina?
+    </div>
+
+    <p><span class="highlight">Dobbiamo riprenderci i nostri dati. Oggi. Adesso.</span> Dobbiamo diventare protagonisti di questo cambiamento — attori, non comparse. Altrimenti ci saranno sempre gli stessi registi a dirigerci. E questa volta non sarà un film.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="section">
+    <div class="section-number">II</div>
+    <h2>La visione</h2>
+
+    <p>Onda è la rete che manca.</p>
+
+    <p>Un sistema peer-to-peer crittografato dove ogni persona possiede la propria intelligenza artificiale — sul proprio smartphone, sul proprio computer, su un dispositivo dedicato — e dove quell'intelligenza può dialogare con l'intelligenza artificiale di un'altra persona, ovunque nel mondo, senza che i dati lascino mai i dispositivi dei loro proprietari.</p>
+
+    <p>Non un servizio centrale che sa tutto di tutti. Una rete dove le esperienze, i desideri, i problemi delle persone diventano materia comune di crescita, non merce di scambio. Dove la condivisione è crescita e non vendita.</p>
+
+    <p>Un insegnante di un piccolo paese siciliano ha bisogno di un nuovo metodo per far crescere la sua classe. Esprime la sua intenzione attraverso la propria AI, che cerca nella rete — anonimamente — e trova risposta nell'AI di un insegnante di Pechino che ha affrontato lo stesso problema. Nessun dato esce dal dispositivo di nessuno dei due. Solo la conoscenza viaggia.</p>
+
+    <p>Un veterinario dell'Oman ha un cavallo che ha ingerito qualcosa di sconosciuto. La sua AI interroga la rete e scopre che un collega in Patagonia ha trattato un caso identico tre anni prima. Si collegano. Il cavallo si salva. Nessuna piattaforma ha estratto valore da quello scambio.</p>
+
+    <p>E quando internet cade — perché un terremoto ha buttato giù le torri, perché un governo ha deciso di censurare, perché vivi in un posto dove la connessione non è mai arrivata davvero — Onda continua a funzionare. Le AI personali si parlano via rete locale, via Bluetooth, via prossimità fisica. Una rete fatta di persone non può dipendere da un'infrastruttura che persone non possedute possono spegnere.</p>
+
+    <p><span class="highlight">Onda è il mezzo, non il fine. Il fine siamo noi.</span> Per troppo tempo siamo stati considerati numeri — utenti da profilare, consumatori da indirizzare, dati da raccogliere. È arrivato il momento di essere protagonisti del nostro presente.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="section">
+    <div class="section-number">III</div>
+    <h2>I principi</h2>
+
+    <div class="principle">
+      <h3>Sovranità</h3>
+      <p>I tuoi dati, la tua identità, la tua AI: tuoi. Vivono dove decidi tu, vengono protetti come decidi tu, e restano accessibili anche se un dispositivo cade — perché sono frammentati crittograficamente su più dispositivi che possiedi o di cui ti fidi. Ogni frammento, da solo, è inutilizzabile. Solo tu, con la tua chiave, puoi ricomporli.</p>
+      <span class="claim">Su un dispositivo non troverai mai tutti i dati da rubare. Se uno dei tuoi dispositivi cade, gli altri ti riportano in piedi.</span>
+    </div>
+
+    <div class="principle">
+      <h3>Decentralizzazione</h3>
+      <p>Nessun singolo punto di controllo. Nessun server centrale che, se cade o viene compromesso, blocca tutto. La rete funziona ovunque, anche quando internet non funziona: via rete globale quando c'è connessione, via rete locale quando non c'è, via prossimità fisica quando serve.</p>
+      <span class="claim">Nessuno può tagliarci fuori, perché non c'è un cavo solo da tagliare.</span>
+    </div>
+
+    <div class="principle">
+      <h3>Libertà</h3>
+      <p>Niente lock-in, niente giardini recintati. Le AI personali si parlano attraverso protocolli aperti. La tua intelligenza vive nel tuo runtime — le interfacce, app, wearable, occhiali, dispositivi che ancora non esistono, si collegano e parlano con la tua AI, ma non la possiedono.</p>
+      <span class="claim">Cambi telefono, cambi wearable, perdi un dispositivo: la tua AI resta tua, perché non è nel dispositivo. È nel runtime.</span>
+    </div>
+
+    <div class="principle">
+      <h3>Servizio</h3>
+      <p>Onda esiste per dare voce, conoscenza e capacità di azione a chi oggi non ne ha abbastanza. Non per ottimizzare ulteriormente chi già ottimizza. Il pescatore di Mazara, l'insegnante di un piccolo paese, il piccolo imprenditore, il familiare di un paziente oncologico — sono loro il nostro utente. Sono loro il motivo per cui costruiamo.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="section">
+    <div class="section-number">IV</div>
+    <h2>L'arsenale</h2>
+
+    <p>Questa non è un'utopia. È un piano. I ferri del mestiere per costruire Onda esistono già — e sono, per la prima volta nella storia recente, dalla nostra parte.</p>
+
+    <p>Per anni ci hanno raccontato che l'intelligenza artificiale doveva vivere in cattedrali di silicio dall'altra parte dell'oceano, perché i modelli erano troppo grandi, troppo complessi, troppo affamati di calcolo per girare altrove. Era vero. Non lo è più. Gli <span class="acronym">SLM</span> — Small Language Models — sono modelli compatti e ottimizzati che girano sul tuo smartphone, sul tuo portatile, sul tuo NAS di casa, su un mini-computer da centocinquanta euro. Hanno chiuso il divario con i giganti centralizzati abbastanza da rendere possibile, oggi, una vera intelligenza personale che non lascia mai i tuoi dispositivi. L'edge computing — il calcolo che avviene ai bordi della rete, dove vivono le persone, e non al centro, dove vivono le piattaforme — non è più una promessa. È una realtà installabile.</p>
+
+    <p>Per anni ci hanno raccontato che l'identità digitale doveva essere concessa da qualcuno: da Google, da Apple, da uno Stato, da una piattaforma che poteva revocartela in qualunque momento. Anche questo non è più vero. I <span class="acronym">DID</span> — Decentralized Identifiers, standard aperto del W3C — permettono a ogni persona, e a ogni AI personale, di avere un'identità crittografica verificabile che nessuno può togliere, censurare o vendere. La tua identità digitale torna a essere tua, come dovrebbe essere sempre stata.</p>
+
+    <p>Per anni ci hanno raccontato che le intelligenze artificiali, se mai avessero parlato tra loro, lo avrebbero fatto attraverso un padrone. Anche qui, qualcosa si è rotto a nostro favore. Esistono oggi protocolli aperti che permettono ad agenti diversi di comunicare direttamente tra loro: <span class="acronym">A2A</span> (Agent-to-Agent), <span class="acronym">MCP</span> (Model Context Protocol), <span class="acronym">ANP</span> (Agent Network Protocol). Sono le lingue con cui le AI personali possono parlarsi senza chiedere il permesso a nessuno, senza passare per un server intermedio che ascolta, registra e monetizza. Sono — letteralmente — i mattoni di una rete federata che non esisteva prima.</p>
+
+    <p>E per anni ci hanno raccontato che senza internet non si comunica. Falso anche questo. Le tecnologie peer-to-peer mature — libp2p, mesh networking, delay-tolerant protocols — permettono a dispositivi vicini di parlarsi via rete locale, via Bluetooth, via radio a basso consumo. Quando il cavo cade, quando la torre cellulare è giù, quando un governo decide di spegnere internet, le AI personali continuano a trovarsi e a parlarsi. La rete non è il filo: la rete sono le persone.</p>
+
+    <p>Per anni ci hanno raccontato che per proteggere i nostri dati dovevamo affidarli a qualcuno: ai server di Apple, di Google, di Dropbox. Sbagliato. Esistono dal 1979 — anno in cui Adi Shamir lo dimostrò matematicamente — tecniche di <span class="acronym">secret sharing</span> che permettono di frammentare un dato in N pezzi tali che ne servano almeno K per ricostruirlo. Meno di K, e non hai niente: nemmeno una versione parziale, zero informazione utile. Combinato con erasure coding e distributed storage, questo ci permette di costruire un sistema dove i tuoi dati vivono frammentati su dispositivi multipli — i tuoi, e quelli di chi scegli di fidarti — senza che nessun singolo punto contenga abbastanza per essere rubato. È backup e difesa nello stesso gesto.</p>
+
+    <p>Onda è l'integrazione di tutto questo in un'esperienza che una persona normale possa usare. Non inventiamo i protocolli: li componiamo. Non creiamo i modelli: li scegliamo, li adattiamo, li installiamo dove devono stare — sui dispositivi delle persone, non nei data center di chi vorrebbe possederle. <span class="highlight">L'arsenale per riprenderci la nostra sovranità digitale è già pronto. Manca solo qualcuno che lo distribuisca.</span></p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="section invitation">
+    <div class="section-number">V</div>
+    <h2>L'invito</h2>
+
+    <p>Mi rivolgo a chiunque su questo pianeta abbia sentito la mia stessa emozione doppia davanti all'intelligenza artificiale: l'eccitazione per la potenza dello strumento e la paura che venga maneggiato dai soliti potenti.</p>
+
+    <div class="invite-group">
+      <p><span class="highlight">Se sei uno sviluppatore</span>, leggi il codice quando sarà pubblicato e contribuisci. Onda nascerà open source dal primo giorno. Ogni riga di codice sarà pubblica, verificabile, modificabile.</p>
+
+      <p><span class="highlight">Se rappresenti una scuola, una ONG, un comune, un consorzio, una cooperativa, una piccola impresa</span>, scrivimi. Hai bisogno di strumenti AI che rispettino i tuoi dati e le persone che servi, non che li sfruttino. Diventa il primo nodo della rete.</p>
+
+      <p><span class="highlight">Se sei una persona qualunque</span>, diffondi questo manifesto. Fallo leggere a chi ami. Ogni persona che userà Onda sarà un nodo della rete. Non saremo clienti di un servizio. Saremo cittadini di una piazza.</p>
+    </div>
+
+    <p>È il futuro dei nostri figli. Costruiamolo adesso.</p>
+  </section>
+
+  <div class="signature">
+    <div class="name">Leonardo Frosina</div>
+    <div class="details">
+      7 maggio 2026<br>
+      Aeroporto Falcone Borsellino, Palermo<br>
+      Sicilia
+    </div>
+  </div>
+
+  <div class="version">
+    Manifesto v1 — projectonda.com
+  </div>
+
+</main>
+
+</body>
+</html>

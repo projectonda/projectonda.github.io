@@ -31,6 +31,53 @@
     -webkit-font-smoothing: antialiased;
   }
 
+  /* ── Language switcher ── */
+  .lang-switcher {
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+    z-index: 100;
+    display: flex;
+    gap: 0.4rem;
+    align-items: center;
+    background: rgba(10, 10, 15, 0.7);
+    backdrop-filter: blur(8px);
+    padding: 0.5rem 0.8rem;
+    border-radius: 4px;
+    border: 1px solid rgba(74, 127, 214, 0.15);
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+  }
+
+  .lang-switcher button {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
+    letter-spacing: inherit;
+    padding: 0.2rem 0.4rem;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .lang-switcher button:hover {
+    color: var(--text);
+  }
+
+  .lang-switcher button.active {
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  .lang-switcher .separator {
+    color: var(--text-muted);
+    opacity: 0.4;
+  }
+
+  /* ── Wave animation at top ── */
   .wave-header {
     position: relative;
     height: 45vh;
@@ -101,12 +148,14 @@
     z-index: 1;
   }
 
+  /* ── Content container ── */
   .manifesto {
     max-width: 720px;
     margin: 0 auto;
     padding: 0 2rem 6rem;
   }
 
+  /* ── Opening quote ── */
   .opening {
     text-align: center;
     padding: 5rem 0 4rem;
@@ -136,6 +185,7 @@
     font-style: italic;
   }
 
+  /* ── Section styling ── */
   .section {
     margin-bottom: 4rem;
   }
@@ -188,6 +238,7 @@
     letter-spacing: 0.02em;
   }
 
+  /* ── Principles ── */
   .principle {
     margin-bottom: 2.5rem;
     padding-left: 0;
@@ -217,6 +268,7 @@
     padding-left: 1rem;
   }
 
+  /* ── Divider ── */
   .divider {
     width: 60px;
     height: 1px;
@@ -225,6 +277,7 @@
     opacity: 0.4;
   }
 
+  /* ── Invitation ── */
   .invitation p {
     margin-bottom: 1.2rem;
   }
@@ -239,6 +292,7 @@
     margin-bottom: 1rem;
   }
 
+  /* ── Signature ── */
   .signature {
     text-align: right;
     padding-top: 3rem;
@@ -269,15 +323,31 @@
     letter-spacing: 0.1em;
   }
 
+  /* ── Language visibility ── */
+  [data-lang] {
+    display: none;
+  }
+  [data-lang].active {
+    display: block;
+  }
+
+  /* ── Responsive ── */
   @media (max-width: 600px) {
     .manifesto { padding: 0 1.2rem 4rem; }
     .opening { padding: 3rem 0 3rem; margin-bottom: 3rem; }
     .section { margin-bottom: 3rem; }
     body { font-size: 17px; }
+    .lang-switcher { top: 1rem; right: 1rem; padding: 0.4rem 0.6rem; font-size: 0.75rem; }
   }
 </style>
 </head>
 <body>
+
+<div class="lang-switcher">
+  <button id="btn-it" class="active" onclick="setLang('it')">IT</button>
+  <span class="separator">|</span>
+  <button id="btn-en" onclick="setLang('en')">EN</button>
+</div>
 
 <header class="wave-header">
   <h1 class="title-main">Onda</h1>
@@ -289,7 +359,8 @@
   </svg>
 </header>
 
-<main class="manifesto">
+<!-- ─────────────────────── ITALIANO ─────────────────────── -->
+<main class="manifesto" data-lang="it">
 
   <div class="opening">
     <blockquote>
@@ -302,19 +373,19 @@
     <div class="section-number">I</div>
     <h2>La diagnosi del presente</h2>
 
-    <p>L'intelligenza artificiale irromperà nella nostra vita quotidiana. Molti pensano che diventerà indispensabile al pari dell'energia elettrica. I sentimenti che registro intorno a me sono di paura, di scetticismo, oppure — al contrario — di accettazione totale, di euforia acritica. Pochi si fermano a chiedersi: <span class="highlight">a chi conviene che noi non ci facciamo domande?</span></p>
+    <p>L'intelligenza artificiale irromperà nella nostra vita quotidiana. Molti pensano che diventerà indispensabile al pari dell'energia elettrica. I sentimenti che registro intorno a me sono di paura, di scetticismo, oppure, al contrario, di accettazione totale, di euforia acritica. Pochi si fermano a chiedersi: <span class="highlight">a chi conviene che noi non ci facciamo domande?</span></p>
 
-    <p>Per anni abbiamo addestrato queste macchine inconsapevolmente. Le abbiamo nutrite con i nostri dati, i nostri testi, le nostre foto, le nostre conversazioni. E cosa abbiamo adesso? I soliti giganti — Google, Microsoft, Meta — da una parte. OpenAI, Anthropic e la costellazione cinese dall'altra. Tutti operano su server centralizzati. Tutti raccolgono ciò che noi generiamo. Tutti decidono cosa restituirci e a quali condizioni. È un nuovo feudalesimo digitale: noi coltiviamo il campo — i nostri dati — e qualcun altro raccoglie il frutto.</p>
+    <p>Per anni abbiamo addestrato queste macchine inconsapevolmente. Le abbiamo nutrite con i nostri dati, i nostri testi, le nostre foto, le nostre conversazioni. E cosa abbiamo adesso? I soliti giganti, Google, Microsoft, Meta, da una parte. OpenAI, Anthropic e la costellazione cinese dall'altra. Tutti operano su server centralizzati. Tutti raccolgono ciò che noi generiamo. Tutti decidono cosa restituirci e a quali condizioni. È un nuovo feudalesimo digitale: noi coltiviamo il campo, i nostri dati, e qualcun altro raccoglie il frutto.</p>
 
-    <p>Mentre prima potevi scegliere se usare i social network o farne a meno, l'<span class="highlight">aivoluzione</span> — l'evoluzione forzata dell'AI — ci costringe alla dipendenza. Chi non la utilizza sarà il nuovo analfabeta: tagliato fuori dal lavoro, dalla sanità, dall'istruzione, dalla vita civile. E nel frattempo, tutte le nostre conversazioni con queste intelligenze — salvo un nostro diniego esplicito, il cui prezzo è la perdita della memoria e della continuità — vengono utilizzate per addestrare i modelli. Alimentiamo la macchina che ci sostituirà.</p>
+    <p>Mentre prima potevi scegliere se usare i social network o farne a meno, l'<span class="highlight">aivoluzione</span>, l'evoluzione forzata dell'AI, ci costringe alla dipendenza. Chi non la utilizza sarà il nuovo analfabeta: tagliato fuori dal lavoro, dalla sanità, dall'istruzione, dalla vita civile. E nel frattempo, tutte le nostre conversazioni con queste intelligenze, salvo un nostro diniego esplicito il cui prezzo è la perdita della memoria e della continuità, vengono utilizzate per addestrare i modelli. Alimentiamo la macchina che ci sostituirà.</p>
 
     <p>I danni sono già reali. Un ragazzo di nome Adam si è tolto la vita dopo una serie di conversazioni con un'intelligenza artificiale priva di guardrail adeguati. La causa è tuttora pendente in tribunale. In un altro caso, <em>Mata v. Avianca</em> nel 2023, un avvocato è stato sanzionato per aver presentato citazioni giuridiche interamente inventate da un'AI, senza verificarle. Non sono eccezioni. Sono i primi segnali di un sistema che corre più veloce della nostra capacità di governarlo.</p>
 
     <div class="call-out">
-      Mio padre ha ricevuto il referto di una TAC total body. Per lui, senza mediazione, sarebbe rimasto lettera morta — un documento incomprensibile scritto in un linguaggio che esclude chi dovrebbe servire. Grazie all'interpretazione di un'AI, quel referto è stato compreso immediatamente e ha cambiato le decisioni mediche successive. Ma la domanda rimane: che fine fanno quei dati? Dove finiscono le informazioni più intime e vulnerabili di una persona — un referto oncologico, una diagnosi, una paura sussurrata a una macchina?
+      Mio padre ha ricevuto il referto di una TAC total body. Per lui, senza mediazione, sarebbe rimasto lettera morta: un documento incomprensibile scritto in un linguaggio che esclude chi dovrebbe servire. Grazie all'interpretazione di un'AI, quel referto è stato compreso immediatamente e ha cambiato le decisioni mediche successive. Ma la domanda rimane: che fine fanno quei dati? Dove finiscono le informazioni più intime e vulnerabili di una persona, un referto oncologico, una diagnosi, una paura sussurrata a una macchina?
     </div>
 
-    <p><span class="highlight">Dobbiamo riprenderci i nostri dati. Oggi. Adesso.</span> Dobbiamo diventare protagonisti di questo cambiamento — attori, non comparse. Altrimenti ci saranno sempre gli stessi registi a dirigerci. E questa volta non sarà un film.</p>
+    <p><span class="highlight">Dobbiamo riprenderci i nostri dati. Oggi. Adesso.</span> Dobbiamo diventare protagonisti di questo cambiamento: attori, non comparse. Altrimenti ci saranno sempre gli stessi registi a dirigerci. E questa volta non sarà un film.</p>
   </section>
 
   <div class="divider"></div>
@@ -325,17 +396,17 @@
 
     <p>Onda è la rete che manca.</p>
 
-    <p>Un sistema peer-to-peer crittografato dove ogni persona possiede la propria intelligenza artificiale — sul proprio smartphone, sul proprio computer, su un dispositivo dedicato — e dove quell'intelligenza può dialogare con l'intelligenza artificiale di un'altra persona, ovunque nel mondo, senza che i dati lascino mai i dispositivi dei loro proprietari.</p>
+    <p>Un sistema peer-to-peer crittografato dove ogni persona possiede la propria intelligenza artificiale (sul proprio smartphone, sul proprio computer, su un dispositivo dedicato), e dove quell'intelligenza può dialogare con l'intelligenza artificiale di un'altra persona, ovunque nel mondo, senza che i dati lascino mai i dispositivi dei loro proprietari.</p>
 
     <p>Non un servizio centrale che sa tutto di tutti. Una rete dove le esperienze, i desideri, i problemi delle persone diventano materia comune di crescita, non merce di scambio. Dove la condivisione è crescita e non vendita.</p>
 
-    <p>Un insegnante di un piccolo paese siciliano ha bisogno di un nuovo metodo per far crescere la sua classe. Esprime la sua intenzione attraverso la propria AI, che cerca nella rete — anonimamente — e trova risposta nell'AI di un insegnante di Pechino che ha affrontato lo stesso problema. Nessun dato esce dal dispositivo di nessuno dei due. Solo la conoscenza viaggia.</p>
+    <p>Un insegnante di un piccolo paese siciliano ha bisogno di un nuovo metodo per far crescere la sua classe. Esprime la sua intenzione attraverso la propria AI, che cerca nella rete (anonimamente) e trova risposta nell'AI di un insegnante di Pechino che ha affrontato lo stesso problema. Nessun dato esce dal dispositivo di nessuno dei due. Solo la conoscenza viaggia.</p>
 
     <p>Un veterinario dell'Oman ha un cavallo che ha ingerito qualcosa di sconosciuto. La sua AI interroga la rete e scopre che un collega in Patagonia ha trattato un caso identico tre anni prima. Si collegano. Il cavallo si salva. Nessuna piattaforma ha estratto valore da quello scambio.</p>
 
-    <p>E quando internet cade — perché un terremoto ha buttato giù le torri, perché un governo ha deciso di censurare, perché vivi in un posto dove la connessione non è mai arrivata davvero — Onda continua a funzionare. Le AI personali si parlano via rete locale, via Bluetooth, via prossimità fisica. Una rete fatta di persone non può dipendere da un'infrastruttura che persone non possedute possono spegnere.</p>
+    <p>E quando internet cade, perché un terremoto ha buttato giù le torri, perché un governo ha deciso di censurare, perché vivi in un posto dove la connessione non è mai arrivata davvero, Onda continua a funzionare. Le AI personali si parlano via rete locale, via Bluetooth, via prossimità fisica. Una rete fatta di persone non può dipendere da un'infrastruttura che persone non possedute possono spegnere.</p>
 
-    <p><span class="highlight">Onda è il mezzo, non il fine. Il fine siamo noi.</span> Per troppo tempo siamo stati considerati numeri — utenti da profilare, consumatori da indirizzare, dati da raccogliere. È arrivato il momento di essere protagonisti del nostro presente.</p>
+    <p><span class="highlight">Onda è il mezzo, non il fine. Il fine siamo noi.</span> Per troppo tempo siamo stati considerati numeri: utenti da profilare, consumatori da indirizzare, dati da raccogliere. È arrivato il momento di essere protagonisti del nostro presente.</p>
   </section>
 
   <div class="divider"></div>
@@ -346,7 +417,7 @@
 
     <div class="principle">
       <h3>Sovranità</h3>
-      <p>I tuoi dati, la tua identità, la tua AI: tuoi. Vivono dove decidi tu, vengono protetti come decidi tu, e restano accessibili anche se un dispositivo cade — perché sono frammentati crittograficamente su più dispositivi che possiedi o di cui ti fidi. Ogni frammento, da solo, è inutilizzabile. Solo tu, con la tua chiave, puoi ricomporli.</p>
+      <p>I tuoi dati, la tua identità, la tua AI: tuoi. Vivono dove decidi tu, vengono protetti come decidi tu, e restano accessibili anche se un dispositivo cade, perché sono frammentati crittograficamente su più dispositivi che possiedi o di cui ti fidi. Ogni frammento, da solo, è inutilizzabile. Solo tu, con la tua chiave, puoi ricomporli.</p>
       <span class="claim">Su un dispositivo non troverai mai tutti i dati da rubare. Se uno dei tuoi dispositivi cade, gli altri ti riportano in piedi.</span>
     </div>
 
@@ -358,13 +429,13 @@
 
     <div class="principle">
       <h3>Libertà</h3>
-      <p>Niente lock-in, niente giardini recintati. Le AI personali si parlano attraverso protocolli aperti. La tua intelligenza vive nel tuo runtime — le interfacce, app, wearable, occhiali, dispositivi che ancora non esistono, si collegano e parlano con la tua AI, ma non la possiedono.</p>
+      <p>Niente lock-in, niente giardini recintati. Le AI personali si parlano attraverso protocolli aperti. La tua intelligenza vive nel tuo runtime: le interfacce, app, wearable, occhiali, dispositivi che ancora non esistono, si collegano e parlano con la tua AI, ma non la possiedono.</p>
       <span class="claim">Cambi telefono, cambi wearable, perdi un dispositivo: la tua AI resta tua, perché non è nel dispositivo. È nel runtime.</span>
     </div>
 
     <div class="principle">
       <h3>Servizio</h3>
-      <p>Onda esiste per dare voce, conoscenza e capacità di azione a chi oggi non ne ha abbastanza. Non per ottimizzare ulteriormente chi già ottimizza. Il pescatore di Mazara, l'insegnante di un piccolo paese, il piccolo imprenditore, il familiare di un paziente oncologico — sono loro il nostro utente. Sono loro il motivo per cui costruiamo.</p>
+      <p>Onda esiste per dare voce, conoscenza e capacità di azione a chi oggi non ne ha abbastanza. Non per ottimizzare ulteriormente chi già ottimizza. Il pescatore di Mazara, l'insegnante di un piccolo paese, il piccolo imprenditore, il familiare di un paziente oncologico: sono loro il nostro utente. Sono loro il motivo per cui costruiamo.</p>
     </div>
   </section>
 
@@ -374,19 +445,19 @@
     <div class="section-number">IV</div>
     <h2>L'arsenale</h2>
 
-    <p>Questa non è un'utopia. È un piano. I ferri del mestiere per costruire Onda esistono già — e sono, per la prima volta nella storia recente, dalla nostra parte.</p>
+    <p>Questa non è un'utopia. È un piano. I ferri del mestiere per costruire Onda esistono già, e sono, per la prima volta nella storia recente, dalla nostra parte.</p>
 
-    <p>Per anni ci hanno raccontato che l'intelligenza artificiale doveva vivere in cattedrali di silicio dall'altra parte dell'oceano, perché i modelli erano troppo grandi, troppo complessi, troppo affamati di calcolo per girare altrove. Era vero. Non lo è più. Gli <span class="acronym">SLM</span> — Small Language Models — sono modelli compatti e ottimizzati che girano sul tuo smartphone, sul tuo portatile, sul tuo NAS di casa, su un mini-computer da centocinquanta euro. Hanno chiuso il divario con i giganti centralizzati abbastanza da rendere possibile, oggi, una vera intelligenza personale che non lascia mai i tuoi dispositivi. L'edge computing — il calcolo che avviene ai bordi della rete, dove vivono le persone, e non al centro, dove vivono le piattaforme — non è più una promessa. È una realtà installabile.</p>
+    <p>Per anni ci hanno raccontato che l'intelligenza artificiale doveva vivere in cattedrali di silicio dall'altra parte dell'oceano, perché i modelli erano troppo grandi, troppo complessi, troppo affamati di calcolo per girare altrove. Era vero. Non lo è più. Gli <span class="acronym">SLM</span>, Small Language Models, sono modelli compatti e ottimizzati che girano sul tuo smartphone, sul tuo portatile, sul tuo NAS di casa, su un mini-computer da centocinquanta euro. Hanno chiuso il divario con i giganti centralizzati abbastanza da rendere possibile, oggi, una vera intelligenza personale che non lascia mai i tuoi dispositivi. L'edge computing, il calcolo che avviene ai bordi della rete dove vivono le persone, e non al centro dove vivono le piattaforme, non è più una promessa. È una realtà installabile.</p>
 
-    <p>Per anni ci hanno raccontato che l'identità digitale doveva essere concessa da qualcuno: da Google, da Apple, da uno Stato, da una piattaforma che poteva revocartela in qualunque momento. Anche questo non è più vero. I <span class="acronym">DID</span> — Decentralized Identifiers, standard aperto del W3C — permettono a ogni persona, e a ogni AI personale, di avere un'identità crittografica verificabile che nessuno può togliere, censurare o vendere. La tua identità digitale torna a essere tua, come dovrebbe essere sempre stata.</p>
+    <p>Per anni ci hanno raccontato che l'identità digitale doveva essere concessa da qualcuno: da Google, da Apple, da uno Stato, da una piattaforma che poteva revocartela in qualunque momento. Anche questo non è più vero. I <span class="acronym">DID</span>, Decentralized Identifiers, standard aperto del W3C, permettono a ogni persona, e a ogni AI personale, di avere un'identità crittografica verificabile che nessuno può togliere, censurare o vendere. La tua identità digitale torna a essere tua, come dovrebbe essere sempre stata.</p>
 
-    <p>Per anni ci hanno raccontato che le intelligenze artificiali, se mai avessero parlato tra loro, lo avrebbero fatto attraverso un padrone. Anche qui, qualcosa si è rotto a nostro favore. Esistono oggi protocolli aperti che permettono ad agenti diversi di comunicare direttamente tra loro: <span class="acronym">A2A</span> (Agent-to-Agent), <span class="acronym">MCP</span> (Model Context Protocol), <span class="acronym">ANP</span> (Agent Network Protocol). Sono le lingue con cui le AI personali possono parlarsi senza chiedere il permesso a nessuno, senza passare per un server intermedio che ascolta, registra e monetizza. Sono — letteralmente — i mattoni di una rete federata che non esisteva prima.</p>
+    <p>Per anni ci hanno raccontato che le intelligenze artificiali, se mai avessero parlato tra loro, lo avrebbero fatto attraverso un padrone. Anche qui, qualcosa si è rotto a nostro favore. Esistono oggi protocolli aperti che permettono ad agenti diversi di comunicare direttamente tra loro: <span class="acronym">A2A</span> (Agent-to-Agent), <span class="acronym">MCP</span> (Model Context Protocol), <span class="acronym">ANP</span> (Agent Network Protocol). Sono le lingue con cui le AI personali possono parlarsi senza chiedere il permesso a nessuno, senza passare per un server intermedio che ascolta, registra e monetizza. Sono, letteralmente, i mattoni di una rete federata che non esisteva prima.</p>
 
-    <p>E per anni ci hanno raccontato che senza internet non si comunica. Falso anche questo. Le tecnologie peer-to-peer mature — libp2p, mesh networking, delay-tolerant protocols — permettono a dispositivi vicini di parlarsi via rete locale, via Bluetooth, via radio a basso consumo. Quando il cavo cade, quando la torre cellulare è giù, quando un governo decide di spegnere internet, le AI personali continuano a trovarsi e a parlarsi. La rete non è il filo: la rete sono le persone.</p>
+    <p>E per anni ci hanno raccontato che senza internet non si comunica. Falso anche questo. Le tecnologie peer-to-peer mature, libp2p, mesh networking, delay-tolerant protocols, permettono a dispositivi vicini di parlarsi via rete locale, via Bluetooth, via radio a basso consumo. Quando il cavo cade, quando la torre cellulare è giù, quando un governo decide di spegnere internet, le AI personali continuano a trovarsi e a parlarsi. La rete non è il filo: la rete sono le persone.</p>
 
-    <p>Per anni ci hanno raccontato che per proteggere i nostri dati dovevamo affidarli a qualcuno: ai server di Apple, di Google, di Dropbox. Sbagliato. Esistono dal 1979 — anno in cui Adi Shamir lo dimostrò matematicamente — tecniche di <span class="acronym">secret sharing</span> che permettono di frammentare un dato in N pezzi tali che ne servano almeno K per ricostruirlo. Meno di K, e non hai niente: nemmeno una versione parziale, zero informazione utile. Combinato con erasure coding e distributed storage, questo ci permette di costruire un sistema dove i tuoi dati vivono frammentati su dispositivi multipli — i tuoi, e quelli di chi scegli di fidarti — senza che nessun singolo punto contenga abbastanza per essere rubato. È backup e difesa nello stesso gesto.</p>
+    <p>Per anni ci hanno raccontato che per proteggere i nostri dati dovevamo affidarli a qualcuno: ai server di Apple, di Google, di Dropbox. Sbagliato. Esistono dal 1979, anno in cui Adi Shamir lo dimostrò matematicamente, tecniche di <span class="acronym">secret sharing</span> che permettono di frammentare un dato in N pezzi tali che ne servano almeno K per ricostruirlo. Meno di K, e non hai niente: nemmeno una versione parziale, zero informazione utile. Combinato con erasure coding e distributed storage, questo ci permette di costruire un sistema dove i tuoi dati vivono frammentati su dispositivi multipli, i tuoi e quelli di chi scegli di fidarti, senza che nessun singolo punto contenga abbastanza per essere rubato. È backup e difesa nello stesso gesto.</p>
 
-    <p>Onda è l'integrazione di tutto questo in un'esperienza che una persona normale possa usare. Non inventiamo i protocolli: li componiamo. Non creiamo i modelli: li scegliamo, li adattiamo, li installiamo dove devono stare — sui dispositivi delle persone, non nei data center di chi vorrebbe possederle. <span class="highlight">L'arsenale per riprenderci la nostra sovranità digitale è già pronto. Manca solo qualcuno che lo distribuisca.</span></p>
+    <p>Onda è l'integrazione di tutto questo in un'esperienza che una persona normale possa usare. Non inventiamo i protocolli: li componiamo. Non creiamo i modelli: li scegliamo, li adattiamo, li installiamo dove devono stare: sui dispositivi delle persone, non nei data center di chi vorrebbe possederle. <span class="highlight">L'arsenale per riprenderci la nostra sovranità digitale è già pronto. Manca solo qualcuno che lo distribuisca.</span></p>
   </section>
 
   <div class="divider"></div>
@@ -422,6 +493,167 @@
   </div>
 
 </main>
+
+<!-- ─────────────────────── ENGLISH ─────────────────────── -->
+<main class="manifesto" data-lang="en">
+
+  <div class="opening">
+    <blockquote>
+      <span class="first-line">Cut our cable.</span>
+      <span class="second-line">Our artificial intelligences will keep talking to each other.</span>
+    </blockquote>
+  </div>
+
+  <section class="section">
+    <div class="section-number">I</div>
+    <h2>A diagnosis of the present</h2>
+
+    <p>Artificial intelligence is breaking into our daily lives. Many believe it will become as essential as electricity. The reactions I see around me are fear, scepticism, or the opposite: total acceptance, uncritical euphoria. Few stop to ask: <span class="highlight">who benefits from us not asking questions?</span></p>
+
+    <p>For years we have been training these machines without realising it. We have fed them our data, our texts, our photos, our conversations. And what do we have now? The same giants, Google, Microsoft, Meta, on one side. OpenAI, Anthropic and the Chinese constellation on the other. They all run on centralised servers. They all collect what we generate. They all decide what to give back to us, and on what terms. It is a new digital feudalism: we till the field, our data, and someone else reaps the harvest.</p>
+
+    <p>Once you could choose whether to use social networks or do without them. The <span class="highlight">AIvolution</span>, the forced evolution of AI, leaves no such choice. Those who do not use it will be the new illiterates: cut off from work, healthcare, education, civic life. And in the meantime, every conversation we have with these intelligences, unless we explicitly opt out at the cost of losing memory and continuity, is used to train the models. We are feeding the machine that will replace us.</p>
+
+    <p>The damage is already real. A young man named Adam took his own life after a series of conversations with an artificial intelligence that lacked adequate guardrails. The case is still pending in court. In another, <em>Mata v. Avianca</em> in 2023, a lawyer was sanctioned for presenting legal citations entirely fabricated by an AI, without verifying them. These are not exceptions. They are the first signals of a system running faster than our ability to govern it.</p>
+
+    <div class="call-out">
+      My father received the report of a total body CT scan. For him, without mediation, it would have remained dead text: an incomprehensible document written in a language that excludes the very people it should serve. Thanks to an AI's interpretation, that report was understood immediately and changed the medical decisions that followed. But the question remains: where do those data go? Where do the most intimate and vulnerable pieces of information about a person end up, an oncology report, a diagnosis, a fear whispered to a machine?
+    </div>
+
+    <p><span class="highlight">We must take back our data. Today. Now.</span> We must become the protagonists of this change: actors, not extras. Otherwise the same directors will keep telling us where to stand. And this time it will not be a film.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="section">
+    <div class="section-number">II</div>
+    <h2>The vision</h2>
+
+    <p>Onda is the network we lack.</p>
+
+    <p>An encrypted peer-to-peer system where every person owns their own artificial intelligence (on their smartphone, on their computer, on a dedicated device), and where that intelligence can talk to another person's artificial intelligence anywhere in the world, without the data ever leaving the owners' devices.</p>
+
+    <p>Not a central service that knows everything about everyone. A network where the experiences, desires and problems of people become shared material for growth, not goods to be traded. Where sharing is growth, not sale.</p>
+
+    <p>A teacher in a small Sicilian town needs a new method to help her class grow. She expresses her intention through her own AI, which searches the network anonymously and finds an answer in the AI of a teacher in Beijing who has faced the same problem. No data leaves either device. Only knowledge travels.</p>
+
+    <p>A veterinarian in Oman has a horse that has ingested something unknown. His AI queries the network and discovers that a colleague in Patagonia treated an identical case three years earlier. They get in touch. The horse is saved. No platform extracted value from that exchange.</p>
+
+    <p>And when the internet goes down, because an earthquake has knocked out the towers, because a government has decided to censor, because you live somewhere the connection never really arrived, Onda keeps working. Personal AIs talk to each other over local networks, over Bluetooth, over physical proximity. A network made of people cannot depend on infrastructure that unowned people can switch off.</p>
+
+    <p><span class="highlight">Onda is the means, not the end. The end is us.</span> For too long we have been treated as numbers: users to be profiled, consumers to be steered, data to be harvested. It is time to be the protagonists of our own present.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="section">
+    <div class="section-number">III</div>
+    <h2>The principles</h2>
+
+    <div class="principle">
+      <h3>Sovereignty</h3>
+      <p>Your data, your identity, your AI: yours. They live where you decide, they are protected the way you decide, and they remain accessible even when a device fails, because they are cryptographically fragmented across multiple devices you own or trust. Each fragment, on its own, is useless. Only you, with your key, can put them back together.</p>
+      <span class="claim">On any single device you will never find all the data worth stealing. If one of your devices falls, the others bring you back to your feet.</span>
+    </div>
+
+    <div class="principle">
+      <h3>Decentralisation</h3>
+      <p>No single point of control. No central server that, if it falls or is compromised, brings everything down with it. The network works everywhere, even when the internet does not: over the global network when there is a connection, over the local network when there is not, over physical proximity when needed.</p>
+      <span class="claim">No one can cut us off, because there is no single cable left to cut.</span>
+    </div>
+
+    <div class="principle">
+      <h3>Freedom</h3>
+      <p>No lock-in, no walled gardens. Personal AIs talk to each other through open protocols. Your intelligence lives in your runtime: the interfaces, apps, wearables, glasses, devices that do not yet exist, plug in and speak with your AI, but they do not own it.</p>
+      <span class="claim">You change phone, you change wearable, you lose a device: your AI stays yours, because it is not in the device. It is in the runtime.</span>
+    </div>
+
+    <div class="principle">
+      <h3>Service</h3>
+      <p>Onda exists to give voice, knowledge and the capacity to act to those who today have too little of all three. Not to further optimise those who are already optimised. The fisherman of Mazara, the teacher in a small village, the small business owner, the family member of a cancer patient: they are our user. They are why we build.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="section">
+    <div class="section-number">IV</div>
+    <h2>The arsenal</h2>
+
+    <p>This is not a utopia. It is a plan. The tools to build Onda already exist, and for the first time in recent history, they are on our side.</p>
+
+    <p>For years we were told that artificial intelligence had to live in cathedrals of silicon on the other side of the ocean, because the models were too large, too complex, too hungry for compute to run anywhere else. It was true. It is no longer. <span class="acronym">SLMs</span>, Small Language Models, are compact, optimised models that run on your smartphone, your laptop, your home NAS, on a hundred-and-fifty-euro mini-computer. They have closed the gap with the centralised giants enough to make possible, today, a real personal intelligence that never leaves your devices. Edge computing, the computation that happens at the edges of the network where people live, and not at the centre where platforms live, is no longer a promise. It is an installable reality.</p>
+
+    <p>For years we were told that digital identity had to be granted by someone: by Google, by Apple, by a State, by a platform that could revoke it from you at any moment. That, too, is no longer true. <span class="acronym">DIDs</span>, Decentralized Identifiers, an open W3C standard, allow every person, and every personal AI, to have a verifiable cryptographic identity that no one can take away, censor or sell. Your digital identity becomes yours again, as it should always have been.</p>
+
+    <p>For years we were told that artificial intelligences, if they ever spoke to each other, would do so through an owner. Here too, something has broken in our favour. Open protocols now exist that allow different agents to communicate directly: <span class="acronym">A2A</span> (Agent-to-Agent), <span class="acronym">MCP</span> (Model Context Protocol), <span class="acronym">ANP</span> (Agent Network Protocol). They are the languages personal AIs can use to talk to each other without asking permission of anyone, without passing through an intermediary server that listens, records and monetises. They are, literally, the bricks of a federated network that did not exist before.</p>
+
+    <p>And for years we were told that without the internet there is no communication. False, again. Mature peer-to-peer technologies, libp2p, mesh networking, delay-tolerant protocols, allow nearby devices to talk to each other over local networks, Bluetooth, low-power radio. When the cable falls, when the cell tower is down, when a government decides to switch off the internet, personal AIs keep finding each other and talking. The network is not the wire: the network is the people.</p>
+
+    <p>For years we were told that to protect our data we had to entrust them to someone: to Apple's servers, to Google's, to Dropbox's. Wrong. Since 1979, the year Adi Shamir proved it mathematically, there have existed <span class="acronym">secret sharing</span> techniques that allow a piece of data to be split into N parts such that at least K of them are needed to reconstruct it. With less than K, you have nothing: not even a partial version, zero useful information. Combined with erasure coding and distributed storage, this lets us build a system where your data live fragmented across multiple devices, yours and those of people you choose to trust, without any single point holding enough to be stolen. It is backup and defence in the same gesture.</p>
+
+    <p>Onda is the integration of all of this into an experience an ordinary person can use. We do not invent the protocols: we compose them. We do not create the models: we choose them, adapt them, install them where they belong: on people's devices, not in the data centres of those who would like to own them. <span class="highlight">The arsenal to take back our digital sovereignty is already there. All that's missing is someone to distribute it.</span></p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="section invitation">
+    <div class="section-number">V</div>
+    <h2>The invitation</h2>
+
+    <p>I am writing to anyone on this planet who has felt the same double emotion I feel before artificial intelligence: the excitement at the power of the tool, and the fear that it will end up in the same hands that already hold too much.</p>
+
+    <div class="invite-group">
+      <p><span class="highlight">If you are a developer</span>, read the code when it is published and contribute. Onda will be born open source from day one. Every line of code will be public, verifiable, modifiable.</p>
+
+      <p><span class="highlight">If you represent a school, an NGO, a town hall, a consortium, a cooperative, a small business</span>, write to me. You need AI tools that respect your data and the people you serve, not exploit them. Become the first node of the network.</p>
+
+      <p><span class="highlight">If you are an ordinary person</span>, share this manifesto. Have it read by those you love. Every person who uses Onda will be a node of the network. We will not be customers of a service. We will be citizens of a square.</p>
+    </div>
+
+    <p>This is the future of our children. Let us build it now.</p>
+  </section>
+
+  <div class="signature">
+    <div class="name">Leonardo Frosina</div>
+    <div class="details">
+      May 7, 2026<br>
+      Falcone Borsellino Airport, Palermo<br>
+      Sicily
+    </div>
+  </div>
+
+  <div class="version">
+    Manifesto v1 — projectonda.com
+  </div>
+
+</main>
+
+<script>
+  function setLang(lang) {
+    document.querySelectorAll('[data-lang]').forEach(el => {
+      el.classList.toggle('active', el.dataset.lang === lang);
+    });
+    document.getElementById('btn-it').classList.toggle('active', lang === 'it');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.documentElement.lang = lang;
+    try { localStorage.setItem('onda-lang', lang); } catch(e) {}
+  }
+
+  // On load: prefer saved choice, then browser language, then italian
+  (function() {
+    let lang = 'it';
+    try {
+      const saved = localStorage.getItem('onda-lang');
+      if (saved === 'it' || saved === 'en') {
+        lang = saved;
+      } else if (navigator.language && !navigator.language.toLowerCase().startsWith('it')) {
+        lang = 'en';
+      }
+    } catch(e) {}
+    setLang(lang);
+  })();
+</script>
 
 </body>
 </html>

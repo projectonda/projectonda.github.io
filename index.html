@@ -107,22 +107,40 @@
     left: 0;
     width: 100%;
     height: 120px;
+    overflow: hidden;
   }
 
-  .wave-svg path {
+  .wave-svg svg {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    will-change: transform;
+  }
+
+  .wave-svg svg path {
     fill: none;
     stroke: var(--accent-warm);
     stroke-width: 0.5;
-    opacity: 0.3;
   }
 
-  .wave-svg .wave1 { animation: waveMove 8s ease-in-out infinite; }
-  .wave-svg .wave2 { animation: waveMove 12s ease-in-out infinite reverse; opacity: 0.15; }
-  .wave-svg .wave3 { animation: waveMove 10s ease-in-out infinite; opacity: 0.1; }
+  .wave-svg .wave1 {
+    animation: waveSlide 18s linear infinite;
+    opacity: 0.35;
+  }
+  .wave-svg .wave2 {
+    animation: waveSlide 25s linear infinite reverse;
+    opacity: 0.2;
+  }
+  .wave-svg .wave3 {
+    animation: waveSlide 32s linear infinite;
+    opacity: 0.12;
+  }
 
-  @keyframes waveMove {
-    0%, 100% { d: path("M0,60 C200,20 400,100 600,50 C800,0 1000,80 1200,40 L1200,120 L0,120 Z"); }
-    50% { d: path("M0,40 C200,80 400,10 600,70 C800,30 1000,90 1200,50 L1200,120 L0,120 Z"); }
+  @keyframes waveSlide {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
   }
 
   .title-main {
@@ -352,11 +370,17 @@
 <header class="wave-header">
   <h1 class="title-main">Onda</h1>
   <p class="title-sub">Manifesto</p>
-  <svg class="wave-svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-    <path class="wave1" d="M0,60 C200,20 400,100 600,50 C800,0 1000,80 1200,40 L1200,120 L0,120 Z"/>
-    <path class="wave2" d="M0,80 C200,40 400,90 600,30 C800,70 1000,20 1200,60 L1200,120 L0,120 Z"/>
-    <path class="wave3" d="M0,50 C200,90 400,30 600,70 C800,10 1000,60 1200,30 L1200,120 L0,120 Z"/>
-  </svg>
+  <div class="wave-svg">
+    <svg class="wave1" viewBox="0 0 2400 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,60 C150,20 300,100 450,60 C600,20 750,100 900,60 C1050,20 1200,100 1200,60 C1350,20 1500,100 1650,60 C1800,20 1950,100 2100,60 C2250,20 2400,100 2400,60 L2400,120 L0,120 Z"/>
+    </svg>
+    <svg class="wave2" viewBox="0 0 2400 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,80 C150,40 300,90 450,80 C600,40 750,90 900,80 C1050,40 1200,90 1200,80 C1350,40 1500,90 1650,80 C1800,40 1950,90 2100,80 C2250,40 2400,90 2400,80 L2400,120 L0,120 Z"/>
+    </svg>
+    <svg class="wave3" viewBox="0 0 2400 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,50 C150,90 300,30 450,50 C600,90 750,30 900,50 C1050,90 1200,30 1200,50 C1350,90 1500,30 1650,50 C1800,90 1950,30 2100,50 C2250,90 2400,30 2400,50 L2400,120 L0,120 Z"/>
+    </svg>
+  </div>
 </header>
 
 <!-- ─────────────────────── ITALIANO ─────────────────────── -->
